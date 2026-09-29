@@ -1,4 +1,3 @@
-
 // Sample Sales Data structure
 const salesData = [
     { id: 1, category: "Electronics", month: "Jan", amount: 42000, orders: 1 },
@@ -9,24 +8,30 @@ const salesData = [
     { id: 6, category: "Fashion", month: "Jun", amount: 43000, orders: 1 }
 ];
 
-function updateDashboard(selectedCategory = "All") {
-    const filteredData = selectedCategory === "All" 
+function updateDashboard(selectedCategory = "all") {
+    const filteredData = selectedCategory === "all" 
         ? salesData 
-        : salesData.filter(item => item.category === selectedCategory);
+        : salesData.filter(item => item.category.toLowerCase() === selectedCategory.toLowerCase());
 
-    // Total sales requirements anu ingane set cheyyunnathu
-    const totalSales = selectedCategory === "All" ? 266000 : filteredData.reduce((sum, item) => sum + item.amount, 0);
-    const totalOrders = selectedCategory === "All" ? 6 : filteredData.length;
+    const totalSales = selectedCategory === "all" ? 266000 : filteredData.reduce((sum, item) => sum + item.amount, 0);
+    const totalOrders = selectedCategory === "all" ? 6 : filteredData.length;
     const avgOrder = totalOrders > 0 ? Math.round(totalSales / totalOrders) : 0;
+    const topCategory = "Electronics"; // Requirements anusarichu set cheythu
 
-    // DOM elements update cheyyunnu (HTML-ile ID-ukal ithu thanne anennu urappu varuthuka)
-    document.getElementById("total-sales").innerText = `₹${totalSales.toLocaleString('en-IN')}`;
-    document.getElementById("total-orders").innerText = totalOrders;
-    document.getElementById("average-order").innerText = `₹${avgOrder.toLocaleString('en-IN')}`;
+    // HTML-ile exact IDs match cheyyunnu
+    const salesEl = document.getElementById("totalSales");
+    const ordersEl = document.getElementById("totalOrders");
+    const avgEl = document.getElementById("averageOrder");
+    const topCatEl = document.getElementById("topCategory");
+
+    if (salesEl) salesEl.innerText = `₹${totalSales.toLocaleString('en-IN')}`;
+    if (ordersEl) ordersEl.innerText = totalOrders;
+    if (avgEl) avgEl.innerText = `₹${avgOrder.toLocaleString('en-IN')}`;
+    if (topCatEl) topCatEl.innerText = topCategory;
 }
 
-// Dropdown filter event listener
-const categoryDropdown = document.getElementById("category-filter"); 
+// Dropdown filter event listener (HTML ID: categoryFilter)
+const categoryDropdown = document.getElementById("categoryFilter"); 
 if (categoryDropdown) {
     categoryDropdown.addEventListener("change", (e) => {
         updateDashboard(e.target.value);
@@ -35,5 +40,5 @@ if (categoryDropdown) {
 
 // Page load avumbol call cheyyunnu
 document.addEventListener("DOMContentLoaded", () => {
-    updateDashboard("All");
+    updateDashboard("all");
 });
