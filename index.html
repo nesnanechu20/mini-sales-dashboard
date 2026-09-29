@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mini Data Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Header -->
+        <header>
+
+            <div>
+                <p class="small-title">DATA INSIGHTS</p>
+
+                <h1>Sales Dashboard</h1>
+
+                <p class="subtitle">
+                    A simple view of sales performance and trends.
+                </p>
+            </div>
+
+            <select id="categoryFilter">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Fashion">
+                    Fashion
+                </option>
+
+                <option value="Books">
+                    Books
+                </option>
+
+            </select>
+
+        </header>
+
+
+        <!-- Summary Cards -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <span>Total Sales</span>
+
+                <h2 id="totalSales">
+                    ₹0
+                </h2>
+
+                <p>Overall revenue</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>Total Orders</span>
+
+                <h2 id="totalOrders">
+                    0
+                </h2>
+
+                <p>Completed orders</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>Average Order</span>
+
+                <h2 id="averageOrder">
+                    ₹0
+                </h2>
+
+                <p>Average order value</p>
+
+            </div>
+
+
+            <div class="card">
+
+                <span>Top Category</span>
+
+                <h2 id="topCategory">
+                    -
+                </h2>
+
+                <p>Based on sales</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Main Content -->
+
+        <section class="content">
+
+
+            <!-- Sales Chart -->
+
+            <div class="panel large-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>Monthly Sales</h3>
+
+                        <p>
+                            Sales performance throughout the year
+                        </p>
+
+                    </div>
+
+                </
