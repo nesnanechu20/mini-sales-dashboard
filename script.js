@@ -16,9 +16,9 @@ function updateDashboard(selectedCategory = "all") {
     const totalSales = selectedCategory === "all" ? 266000 : filteredData.reduce((sum, item) => sum + item.amount, 0);
     const totalOrders = selectedCategory === "all" ? 6 : filteredData.length;
     const avgOrder = totalOrders > 0 ? Math.round(totalSales / totalOrders) : 0;
-    const topCategory = "Electronics"; // Requirements anusarichu set cheythu
+    const topCategory = "Electronics";
 
-    // HTML-ile exact IDs match cheyyunnu
+    // Updating DOM elements
     const salesEl = document.getElementById("totalSales");
     const ordersEl = document.getElementById("totalOrders");
     const avgEl = document.getElementById("averageOrder");
@@ -30,7 +30,7 @@ function updateDashboard(selectedCategory = "all") {
     if (topCatEl) topCatEl.innerText = topCategory;
 }
 
-// Dropdown filter event listener (HTML ID: categoryFilter)
+// Dropdown filter event listener
 const categoryDropdown = document.getElementById("categoryFilter"); 
 if (categoryDropdown) {
     categoryDropdown.addEventListener("change", (e) => {
@@ -38,7 +38,7 @@ if (categoryDropdown) {
     });
 }
 
-// Page load avumbol call cheyyunnu
+// Initial load call
 document.addEventListener("DOMContentLoaded", () => {
     updateDashboard("all");
 });
